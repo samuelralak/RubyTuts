@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 	def new
-	
+		@post = Post.new
 	end
 	
 	#action to list all posts
@@ -13,12 +13,20 @@ class PostsController < ApplicationController
 		@post = Post.find(params[:id])
 	end
 	
-	#action to create new post
+	#action to save new post
 	def create
-		@post = Post.new(post_params)
+		@post = Post.new(params[:post].permit(:title, :text))
 		
-		@post.save
-		redirect_to @post
+		if @post.save
+		
+			#tell browser to issue anothe request
+			redirect_to @post
+		else
+		
+			#render is used so that @post is passed back to the
+			#new template when it is rendered
+			render 'new'
+		end
 	end
 	
 	private
