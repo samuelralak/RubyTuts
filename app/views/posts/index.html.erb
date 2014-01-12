@@ -1,21 +1,27 @@
-<h1>Listing Posts</h1>
+<div style="text-align: center">
+	<h1>All Posts</h1>
 
-<table>
-	<thead>
-		<tr>
-			<th>Title</th>
-			<th>Text</th>
-		</tr>
-	</thead>
+	<%= link_to "New Post", new_post_path %>
+
+	<br/><br/>
+
+	<table align="center" border=1>
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Text</th>
+			</tr>
+		</thead>
 	
-	<% @posts.each do |post| %>
+		<% @posts.each do |post| %>
 	
-	<tbody>
-		<tr>
-			<td><%= post.title %></td>
-			<td><%= post.text %></td>
-		</tr>
-	</tbody>
+		<tbody>
+			<tr>
+				<td><%= post.title %></td>
+				<td><%= post.text %></td>
+			</tr>
+		</tbody>
 	
-	<% end %>
-</table>
+		<% end %>
+	</table>
+</div>
