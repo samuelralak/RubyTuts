@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+	
+	#renders new.html.erb: contains form for creating new post
 	def new
 		@post = Post.new
 	end
@@ -8,17 +10,17 @@ class PostsController < ApplicationController
 		@posts = Post.all
 	end
 	
-	#action to show content of a post
+	#action to show content of a post; renders show.html.erb
 	def show
 		@post = Post.find(params[:id])
 	end
 	
-	#action to edit a post
+	#action to edit a post; renders edit.html.erb
 	def edit
 		@post = Post.find(params[:id])
 	end
 	
-	#method to add new record into the database
+	#method to add new post into the database
 	def create
 		@post = Post.new(params[:post].permit(:title, :text))
 		
