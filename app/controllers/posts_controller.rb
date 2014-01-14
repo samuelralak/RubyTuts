@@ -41,9 +41,20 @@ class PostsController < ApplicationController
 		
 		if @post.update(params[:post].permit(:title, :text))
 			redirect_to @post
+			
 		else
+			#@post is passed back to the edit template
+			#when it is rendered
 			render 'edit'
 		end
+	end
+	
+	#method to delete a record from the database
+	def destroy
+		@post = Post.find(params[:id])
+		@post.destroy
+		
+		redirect_to posts_path
 	end
 	
 	private
