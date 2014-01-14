@@ -1,6 +1,8 @@
-<div style="text-align: center">
+<center><h1>View Post</h1></center>
 
-	<h1>View Post</h1>	
+<div style="text-align: center">
+	
+	<div style="text-align: left !important; display: inline-block !important">
 	
 	<p>
 		<strong>Title:</strong>
@@ -11,6 +13,20 @@
 		<strong>Text:</strong>
 		<%= @post.text %>
 	</p>
-
-	<%= link_to "Back", posts_path %> | <%= link_to "Edit", edit_post_path(@post) %> 
+	
+	<h2>Comments</h2>
+	
+	<!-- renders partial file found in app/views/comments/_comment.html.erb. 
+		the render method iterates through the collection
+	-->
+	<%= render @post.comments %>
+		
+	<h2>Add a comment</h2>
+	
+	<!-- renders partial file found in app/views/comments/_form.html.erb. -->
+	<%= render "comments/form" %>
+	
+	<%= link_to "Edit Post", edit_post_path(@post) %> | <%= link_to "Back to Posts", posts_path %>
+	
+	</div>
 </div>
