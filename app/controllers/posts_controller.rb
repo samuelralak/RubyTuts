@@ -1,14 +1,21 @@
 class PostsController < ApplicationController
 	
-	#renders new.html.erb: contains form for creating new post
-	def new
-		@post = Post.new
-	end
+	#rails http_basic_authenticate_with method blocks action to
+	#various actions if person is not authenticated
+	
+	#user should be autheenticated on every action except 'show' and 'index'
+	http_basic_authenticate_with name: "samuel", password: "ralak", except: [:index, :show]
 	
 	#action to list all posts
 	def index
 		@posts = Post.all
 	end
+	
+	#renders new.html.erb: contains form for creating new post
+	def new
+		@post = Post.new
+	end
+	
 	
 	#action to show content of a post; renders show.html.erb
 	def show
