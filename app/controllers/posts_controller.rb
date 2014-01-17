@@ -3,9 +3,6 @@ class PostsController < ApplicationController
 	#rails http_basic_authenticate_with method blocks action to
 	#various actions if person is not authenticated
 	
-	#user should be autheenticated on every action except 'show' and 'index'
-	http_basic_authenticate_with name: "samuel", password: "ralak", except: [:index, :show]
-	
 	#action to list all posts
 	def index
 		@posts = Post.all
