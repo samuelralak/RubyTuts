@@ -46,3 +46,8 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# enable all platform features such as static asset serving and logging
+gem 'rails_12factor', group: :production
+
+ruby "1.9.3"
